@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>Home task 1</title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script>
+    function myElement(type, props, children){
+        
+        let element = document.createElement(type);
+        
+        if(typeof children === 'object'){
+            children.forEach(child => {
+            
+            if(typeof child === 'object'){
+                element.appendChild(child)
+            }
+            else{
+                element.innerHTML += child
+            }
+            });
+        }else {
+            element.innerHTML = children;
+        }
+
+        if(props){
+            if(props.style){
+            element.style.backgroundColor = props.style.backgroundColor;
+            }else if(props.textContent){
+            element.textContent = props.textContent
+            } 
+        }
+        
+        return element;
+        }
+
+    function createElement(type,props,children){
+        return myElement(type,props, children);
+    }
+
+    function render(toRender,destination){
+        destination.appendChild(toRender);
+    }
+
+    const React = {
+        createElement,
+        render
+    }
+
+    const app = React.createElement('div', {style: {backgroundColor:'red'} },[
+            React.createElement('span',undefined, 'Hello world'),   
+            React.createElement('br'),
+            'This is just a text node',
+            React.createElement('div',{textContent: 'Text context'}),
+        ])
+        React.render(app, document.getElementById('root'))
+
+    </script>
+
+</body>
+</html>
