@@ -1,0 +1,13 @@
+.inputStyles {
+    padding: 15px;
+    margin-right: 10px;
+}
+.buttonStyles{
+    padding: 15px;
+    border-radius: 7px;
+    background:rgb(71, 172, 71);
+    border:none;
+}
+.buttonStyles:hover{
+    background: green;
+}

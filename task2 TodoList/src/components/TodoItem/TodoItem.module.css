@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    padding: 10px;
+    margin-bottom:10px;
+    justify-content: space-between;
+    background: rgb(152, 195, 235);
+    border-radius: 7px;
+}
+
+.completed{
+    text-decoration: line-through;
+    color: white;
+}
+
+.buttonStyles{
+    background:rgb(247, 91, 91);
+    border-radius: 7px;
+    width:30px;
+    color:white;
+    height: 30px;
+    border:0;
+}
+.buttonStyles:hover{
+    background:rgb(255, 2, 2);
+}
