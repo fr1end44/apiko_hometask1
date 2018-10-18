@@ -32,7 +32,6 @@ const Footer = ({
 )}
 
 Footer.propTypes = {
-    items : T.array,
     onClick: T.func,
 }
 
