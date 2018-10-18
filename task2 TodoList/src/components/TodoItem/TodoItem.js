@@ -11,18 +11,21 @@ const TodoItem = ({
     id,
     completed,
     onClick,
+    itemRef,
     onRemoveClick
 }) => {
     const className = classes({ completed });
     return (
         <div 
         className={s.container}>
-            <div onClick={()=> onClick(id)}
-                className={className}
+            <li 
+            ref={itemRef}
+            onClick={()=> onClick(id)}
+            className={className}
             >
                 {title}
             
-            </div>
+            </li>
             <button className={s.buttonStyles} onClick={() => onRemoveClick(id)}>x</button>
         </div>
     )

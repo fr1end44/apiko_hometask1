@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import s from './App.module.css';
+import './App.module.css'
 import Header from './components/Header/Header';
 import TodoList from './components/TodoList/TodoList';
-import Footer from './components/Footer/Footer'
-import { createTodo } from './utils/creators'
+import Footer from './components/Footer/Footer';
+import { createTodo } from './utils/creators';
 
 class App extends Component {
   constructor(props){
@@ -12,10 +13,13 @@ class App extends Component {
     this.state = {
       inputValue : '',
       todos: [],
+      all:[],
+      done:[],
+      undone:[],
     };
 
     this._inputRef = React.createRef();
-
+    this._testRef = React.createRef();
     this.handleTodoClick = this.handleTodoClick.bind(this)
     this.handleAddTodo = this.handleAddTodo.bind(this)
     this.handleTodoRemoveClick = this.handleTodoRemoveClick.bind(this)
@@ -47,7 +51,6 @@ class App extends Component {
     this.setState({
       todos: newTodos,
     })
-
   }
   handleTodoRemoveClick(id){
     this.setState({
@@ -72,24 +75,59 @@ class App extends Component {
       });
 
       this._inputRef.current.focus()
+
   }
 
 
   handleAllClick(){
-  
-  }
+
+    let a = document.querySelectorAll('li');
+      for(let i=0;i<a.length;i++){
+        if(a[i].parentNode.classList.length > 1){
+          a[i].parentNode.classList.remove('invisible')
+        }
+      }
+    }
+
   handleCompletedClick(){
-    
+
+    let a = document.querySelectorAll('li');
+    for(let i=0;i<a.length;i++){
+      if(a[i].parentNode.classList.length > 1){
+        a[i].parentNode.classList.remove('invisible')
+      }
+    }
+    for(let i=0;i<a.length;i++){
+      if(a[i].classList.length === 0){
+        a[i].parentNode.classList.add('invisible')
+      }
+    }
+
   }
+  
 
   handleUncompletedClick(){
-    
+  
+    let a = document.querySelectorAll('li');
+    for(let i=0;i<a.length;i++){
+      if(a[i].parentNode.classList.length > 1){
+        a[i].parentNode.classList.remove('invisible')
+      }
+    }
+    for(let i=0;i<a.length;i++){
+      if(a[i].classList.length > 0){
+        a[i].parentNode.classList.add('invisible')
+      }
+    }
   }
 
 render() {
     return (
       <div className={s.App}>
-        <div className={s.container}>
+        
+        <div
+         className={s.container}
+         >
           <Header 
             inputRef={this._inputRef}
             value={this.state.inputValue}
@@ -103,6 +141,7 @@ render() {
             onTodoRemoveClick={this.handleTodoRemoveClick}
           />
           <Footer 
+            items={this.state.todos}
             onAllClick={this.handleAllClick}
             onCompletedClick={this.handleCompletedClick}
             onUncompletedClick={this.handleUncompletedClick}

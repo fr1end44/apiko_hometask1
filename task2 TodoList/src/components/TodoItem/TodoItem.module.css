@@ -23,3 +23,6 @@
 .buttonStyles:hover{
     background:rgb(255, 2, 2);
 }
+lI{
+    list-style: none;
+}

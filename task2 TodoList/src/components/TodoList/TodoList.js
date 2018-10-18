@@ -6,7 +6,8 @@ import s from './TodoList.module.css'
 const TodoList = ({
     items,
     onTodoClick,
-    onTodoRemoveClick
+    onTodoRemoveClick,
+    itemRef
 }) => (
     <ul className={s.ulStyles}>
         {items.map(i=> (
@@ -14,6 +15,7 @@ const TodoList = ({
                 onRemoveClick={onTodoRemoveClick}
                 onClick={onTodoClick} 
                 key={i.id} 
+                itemRef={itemRef}
                 {...i} 
             />
         ))}

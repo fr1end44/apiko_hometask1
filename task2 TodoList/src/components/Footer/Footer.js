@@ -2,12 +2,13 @@ import React from 'react';
 import T from 'prop-types';
 import s from './Footer.module.css';
 
+
 const Footer = ({
-    items,
     onAllClick,
     onCompletedClick,
     onUncompletedClick
-}) => (
+}) => {
+    return ( 
     <div className={s.footerClass}>
         <button 
             className={s.buttonStyles}
@@ -28,10 +29,10 @@ const Footer = ({
             Uncompleted
         </button>
     </div>
-);
+)}
 
 Footer.propTypes = {
-    todos : T.array,
+    items : T.array,
     onClick: T.func,
 }
 
